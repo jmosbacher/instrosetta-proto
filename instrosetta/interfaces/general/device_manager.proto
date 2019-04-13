@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+package instrosetta.interfaces.general.device_manager.v1;
+
+service DeviceManager {
+    rpc GetOnlineServers(GetOnlineServersRequest) returns (GetOnlineServersResponse) {}
+    rpc GetConnectedServers(GetConnectedServersRequest) returns (GetConnectedServersResponse) {}
+    rpc RegisterServer(RegisterServerRequest) returns (RegisterServerResponse) {}
+}
+
+message ServerDetails {
+    string name = 1;
+    string device_name = 2;
+    string interface_name = 3;
+    string address = 4;
+    string device_details = 5;
+}
+
+message GetOnlineServersRequest {
+    string name = 1;
+}
+
+message GetOnlineServersResponse {
+    string name = 1;
+}
+
+message GetConnectedServersRequest {
+    string name = 1;
+}
+
+message GetConnectedServersResponse {
+    string name = 1;
+}
+
+message RegisterServerRequest {
+    string name = 1;
+}
+
+message RegisterServerResponse {
+    string name = 1;
+}
