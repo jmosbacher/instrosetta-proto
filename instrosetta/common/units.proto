@@ -30,8 +30,9 @@ message PhysicalQuantity {
 
 message Timestamp {
     string name = 1;
-    string value = 2;
-    string precision = 3;
+    int64 value = 2;
+    string precision_name = 3;
+    int32 precision_exponent = 4;
 }
 
 enum DataQuality {
