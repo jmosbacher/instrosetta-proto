@@ -19,11 +19,30 @@ message PhysicalUnit {
     string unit_name = 2;
     repeated string aliases = 3;
     PhysicalDimension dimension = 4;
-    double si_scale = 5;
+    double si_multiplier = 5;
 }
 
 message PhysicalQuantity {
     string name = 1;
     PhysicalUnit unit = 2;
     double magnitude = 3;
+}
+
+message Timestamp {
+    string name = 1;
+    string value = 2;
+    string precision = 3;
+}
+
+enum DataQuality {
+    UNKNOWN = 0;
+    GOOD = 1;
+    BAD = 2;
+}
+
+message PhysicalMeasurement {
+    string name = 1;
+    PhysicalQuantity value = 2;
+    DataQuality quality = 3;
+    Timestamp timestamp = 4;
 }
