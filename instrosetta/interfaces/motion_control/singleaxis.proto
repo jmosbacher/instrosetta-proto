@@ -18,8 +18,9 @@ service SingleAxis {
 
 message InitializeRequest {
     string name = 1;
-    map <string, string> properties = 2;
-
+    string device_id = 2;
+    float timeout = 3;
+    float polling_interval = 4;
 }
 
 message InitializeResponse {
