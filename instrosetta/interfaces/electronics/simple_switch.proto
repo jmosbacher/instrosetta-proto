@@ -2,10 +2,9 @@ syntax = "proto3";
 
 package instrosetta.interfaces.electronics.simple_switch.v1;
 
-import "instrosetta/common/connection.proto";
 
 service SimpleSwitch {
-    rpc Connect(ConnectRequest) returns (ConnectResponse) {}
+    rpc Initialize(InitializeRequest) returns (InitializeResponse) {}
     rpc Shutdown(ShutdownRequest) returns (ShutdownResponse) {}
     rpc Flip(FlipRequest) returns (FlipResponse) {}
     

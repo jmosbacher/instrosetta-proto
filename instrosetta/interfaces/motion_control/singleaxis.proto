@@ -3,8 +3,6 @@ syntax = "proto3";
 
 package instrosetta.interfaces.motion_control.singleaxis.v1;
 
-import "instrosetta/common/Initializeion.proto";
-
 
 service SingleAxis {
     rpc ScanDevices(ScanDevicesRequest) returns (stream ScanDevicesResponse) {}

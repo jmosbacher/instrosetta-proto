@@ -2,7 +2,6 @@ syntax = "proto3";
 
 package instrosetta.interfaces.light_analysis.power_meter.v1;
 
-import "instrosetta/common/Initializeion.proto";
 
 service PowerMeter {
     
