@@ -2,11 +2,10 @@ syntax = "proto3";
 
 package instrosetta.interfaces.light_analysis.monochromator;
 
-import "instrosetta/common/connection.proto";
 
 service Monochromator {
-    rpc Connect(ConnectRequest) returns (ConnectResponse) {}
-    rpc Disconnect(DisconnectRequest) returns (DisconnectResponse) {}
+    rpc Initialize(InitializeRequest) returns (InitializeResponse) {}
+    rpc Shutdown(ShutdownRequest) returns (ShutdownResponse) {}
 
     rpc GetWavelengthRange(GetWavelengthRangeRequest) returns (GetWavelengthRangeResponse) {}
     rpc GetWavelength(GetWavelengthRequest) returns (GetWavelengthResponse) {}
@@ -20,6 +19,27 @@ service Monochromator {
     rpc GetSlitWidth(GetSlitWidthRequest) returns (GetSlitWidthResponse) {}
     rpc SetSlitWidth(SetSlitWidthRequest) returns (SetSlitWidthResponse) {}
 }
+
+message InitializeRequest {
+    string name = 1;
+    map <string, string> properties = 2;
+
+}
+
+message InitializeResponse {
+    string name = 1;
+    bool success = 2;
+}
+
+message ShutdownRequest {
+    string name = 1;
+}
+
+message ShutdownResponse {
+    string name = 1;
+    bool success = 2;
+}
+
 
 message GetWavelengthRangeRequest {
     string name = 1; 

@@ -3,13 +3,13 @@ syntax = "proto3";
 
 package instrosetta.interfaces.motion_control.singleaxis.v1;
 
-import "instrosetta/common/connection.proto";
+import "instrosetta/common/Initializeion.proto";
 
 
 service SingleAxis {
     rpc ScanDevices(ScanDevicesRequest) returns (stream ScanDevicesResponse) {}
-    rpc Connect(ConnectRequest) returns (ConnectResponse) {}
-    rpc Disconnect(DisconnectRequest) returns (DisconnectResponse) {}
+    rpc Initialize(InitializeRequest) returns (InitializeResponse) {}
+    rpc Shutdown(ShutdownRequest) returns (ShutdownResponse) {}
 
     rpc HomeMotor(HomeMotorRequest) returns (Position) {}
     rpc GetRange(GetRangeRequest) returns (StageRange) {}
@@ -17,6 +17,27 @@ service SingleAxis {
     rpc MoveAbsolute(MoveAbsoluteRequest) returns (stream Position) {}
     rpc MoveRelative(MoveRelativeRequest) returns (stream Position) {}
 }
+
+message InitializeRequest {
+    string name = 1;
+    map <string, string> properties = 2;
+
+}
+
+message InitializeResponse {
+    string name = 1;
+    bool success = 2;
+}
+
+message ShutdownRequest {
+    string name = 1;
+}
+
+message ShutdownResponse {
+    string name = 1;
+    bool success = 2;
+}
+
 
 
 message ScanDevicesRequest {

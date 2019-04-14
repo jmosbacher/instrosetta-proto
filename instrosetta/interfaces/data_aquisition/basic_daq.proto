@@ -8,7 +8,7 @@ service BasicDaq {
     
     rpc GetAvailbleDevices(GetAvailbleDevicesRequest) returns (stream GetAvailbleDevicesResponse) {}
     rpc Connect(ConnectRequest) returns (ConnectResponse) {}
-    rpc Disconnect(DisconnectRequest) returns (DisconnectResponse) {}
+    rpc Shutdown(ShutdownRequest) returns (ShutdownResponse) {}
 
     rpc ReadDigital(ReadDigitalRequest) returns (ReadDigitalResponse) {}
     rpc ReadAnalog(ReadAnalogRequest) returns (ReadAnalogResponse) {}
@@ -36,6 +36,27 @@ message GetAvailbleDevicesRequest {
 message GetAvailbleDevicesResponse {
     string name = 1;
 }
+
+message InitializeRequest {
+    string name = 1;
+    map <string, string> properties = 2;
+
+}
+
+message InitializeResponse {
+    string name = 1;
+    bool success = 2;
+}
+
+message ShutdownRequest {
+    string name = 1;
+}
+
+message ShutdownResponse {
+    string name = 1;
+    bool success = 2;
+}
+
 
 message ReadDigitalRequest {
     string name = 1; 

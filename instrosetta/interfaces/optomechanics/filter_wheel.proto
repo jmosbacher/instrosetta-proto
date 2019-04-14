@@ -2,11 +2,10 @@ syntax = "proto3";
 
 package instrosetta.interfaces.optomechanics.filter_wheel.v1;
 
-import "instrosetta/common/connection.proto";
 
 service FilterWheel {
-    rpc Connect(ConnectRequest) returns (ConnectResponse) {}
-    rpc Disconnect(DisconnectRequest) returns (DisconnectResponse) {}
+    rpc Initialize(InitializeRequest) returns (InitializeResponse) {}
+    rpc Shutdown(ShutdownRequest) returns (ShutdownResponse) {}
     
     rpc GetSpeedOptions(GetSpeedOptionsRequest) returns (GetSpeedOptionsResponse) {} 
     rpc GetSpeed(GetSpeedRequest) returns (GetSpeedResponse) {}
@@ -31,6 +30,25 @@ service FilterWheel {
 // a unique identifier of the request-response session.
 // How the uid is generated is implementation specific and should not be relied on for functionality.
 
+message InitializeRequest {
+    string name = 1;
+    map <string, string> properties = 2;
+
+}
+
+message InitializeResponse {
+    string name = 1;
+    bool success = 2;
+}
+
+message ShutdownRequest {
+    string name = 1;
+}
+
+message ShutdownResponse {
+    string name = 1;
+    bool success = 2;
+}
 
 message GetSpeedOptionsRequest {
     string name = 1; 

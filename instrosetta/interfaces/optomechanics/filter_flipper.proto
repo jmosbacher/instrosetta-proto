@@ -3,9 +3,9 @@ syntax = "proto3";
 package instrosetta.interfaces.optomechanics.filter_flipper.v1;
 
 service FilterFlipper {
-    rpc Echo(EchoRequest) returns (EchoResponse) {}
-    rpc Connect(ConnectRequest) returns (ConnectResponse) {}
-    rpc Disconnect(DisconnectRequest) returns (DisconnectResponse) {}
+
+    rpc Initialize(InitializeRequest) returns (InitializeResponse) {}
+    rpc Shutdown(ShutdownRequest) returns (ShutdownResponse) {}
     
     rpc GetPosition(GetPositionRequest) returns (GetPositionResponse) {}
     rpc SetPosition(SetPositionRequest) returns (SetPositionResponse) {}
@@ -19,28 +19,27 @@ service FilterFlipper {
 // The first property of all messages is called "name" and reserved for
 // a unique identifier of the request-response session.
 // How the uid is generated is implementation specific and should not be relied on for functionality.
+message InitializeRequest {
+    string name = 1;
+    map <string, string> properties = 2;
 
-message EchoRequest {
-    string name = 1; 
-}
-
-message EchoResponse {
-    string name = 1; 
-}
-message ConnectRequest {
-    string name = 1; 
 }
 
-message ConnectResponse {
-    string name = 1; 
-}
-message DisconnectRequest {
-    string name = 1; 
+message InitializeResponse {
+    string name = 1;
+    bool success = 2;
 }
 
-message DisconnectResponse {
-    string name = 1; 
+message ShutdownRequest {
+    string name = 1;
 }
+
+message ShutdownResponse {
+    string name = 1;
+    bool success = 2;
+}
+
+
 
 message GetPositionRequest {
     string name = 1;

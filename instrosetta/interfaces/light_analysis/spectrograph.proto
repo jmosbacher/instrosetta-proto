@@ -2,11 +2,10 @@ syntax = "proto3";
 
 package instrosetta.interfaces.light_analysis.spectrograph.v1;
 
-import "instrosetta/common/connection.proto";
 
 service Spectrograph {
-    rpc Connect(ConnectRequest) returns (ConnectResponse) {}
-    rpc Disconnect(DisconnectRequest) returns (DisconnectResponse) {}
+    rpc Initialize(InitializeRequest) returns (InitializeResponse) {}
+    rpc Shutdown(ShutdownRequest) returns (ShutdownResponse) {}
     rpc Save(SaveRequest) returns (SaveResponse) {}
     rpc Run(RunRequest) returns (RunResponse) {}
     rpc ClearScreen(ClearScreenRequest) returns (ClearScreenResponse) {}
@@ -37,6 +36,25 @@ service Spectrograph {
 // a unique identifier of the request-response session.
 // How the uid is generated is implementation specific and should not be relied on for functionality.
 
+message InitializeRequest {
+    string name = 1;
+    map <string, string> properties = 2;
+
+}
+
+message InitializeResponse {
+    string name = 1;
+    bool success = 2;
+}
+
+message ShutdownRequest {
+    string name = 1;
+}
+
+message ShutdownResponse {
+    string name = 1;
+    bool success = 2;
+}
 
 
 message SaveRequest {
@@ -204,12 +222,12 @@ message SetSlitWidthResponse {
 }
 
 
-message GetConnectionDetailsRequest {
+message GetInitializeionDetailsRequest {
     string name = 1;
     string units = 2;
 }
 
-message GetConnectionDetailsResponse {
+message GetInitializeionDetailsResponse {
     string name = 1;
     double magnitude = 2;
     string units = 3;

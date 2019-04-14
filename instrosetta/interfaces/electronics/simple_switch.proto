@@ -6,7 +6,7 @@ import "instrosetta/common/connection.proto";
 
 service SimpleSwitch {
     rpc Connect(ConnectRequest) returns (ConnectResponse) {}
-    rpc Disconnect(DisconnectRequest) returns (DisconnectResponse) {}
+    rpc Shutdown(ShutdownRequest) returns (ShutdownResponse) {}
     rpc Flip(FlipRequest) returns (FlipResponse) {}
     
     rpc GetState(GetStateRequest) returns (GetStateResponse) {}
@@ -17,6 +17,26 @@ service SimpleSwitch {
 // The first property of all messages is called "name" and reserved for
 // a unique identifier of the request-response session.
 // How the uid is generated is implementation specific and should not be relied on for functionality.
+
+message InitializeRequest {
+    string name = 1;
+    map <string, string> properties = 2;
+
+}
+
+message InitializeResponse {
+    string name = 1;
+    bool success = 2;
+}
+
+message ShutdownRequest {
+    string name = 1;
+}
+
+message ShutdownResponse {
+    string name = 1;
+    bool success = 2;
+}
 
 
 message FlipRequest {

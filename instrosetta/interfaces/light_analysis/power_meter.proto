@@ -2,12 +2,12 @@ syntax = "proto3";
 
 package instrosetta.interfaces.light_analysis.power_meter.v1;
 
-import "instrosetta/common/connection.proto";
+import "instrosetta/common/Initializeion.proto";
 
 service PowerMeter {
     
-    rpc Connect(ConnectRequest) returns (ConnectResponse) {}
-    rpc Disconnect(DisconnectRequest) returns (DisconnectResponse) {}
+    rpc Initialize(InitializeRequest) returns (InitializeResponse) {}
+    rpc Shutdown(ShutdownRequest) returns (ShutdownResponse) {}
     
     rpc GetPower(GetPowerRequest) returns (GetPowerResponse) {}
     rpc SetPower(SetPowerRequest) returns (SetPowerResponse) {}
@@ -31,6 +31,25 @@ service PowerMeter {
 // a unique identifier of the request-response session.
 // How the uid is generated is implementation specific and should not be relied on for functionality.
 
+message InitializeRequest {
+    string name = 1;
+    map <string, string> properties = 2;
+
+}
+
+message InitializeResponse {
+    string name = 1;
+    bool success = 2;
+}
+
+message ShutdownRequest {
+    string name = 1;
+}
+
+message ShutdownResponse {
+    string name = 1;
+    bool success = 2;
+}
 
 message GetPowerRequest {
     string name = 1;
