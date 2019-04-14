@@ -16,10 +16,11 @@ service BasicDaq {
     rpc WriteAnalog(WriteAnalogRequest) returns (WriteAnalogResponse) {}
     
     rpc GetDeviceDetails(GetDeviceDetailsRequest) returns (GetDeviceDetailsResponse) {}
-    rpc GetDigitalOutputs(GetDigitalOutputsRequest) returns (GetDigitalOutputsResponse) {}
-    rpc GetDigitalInputs(GetDigitalInputsRequest) returns (GetDigitalInputsResponse) {}
-    rpc GetAnalogOutputs(GetAnalogOutputsRequest) returns (GetAnalogOutputsResponse) {}
-    rpc GetAnalogInputs(GetAnalogInputsRequest) returns (GetAnalogInputsResponse) {}
+    rpc GetDigitalChannels(GetDigitalChannelsRequest) returns (GetDigitalChannelsResponse) {}
+    rpc GetAnalogChannels(GetAnalogChannelsRequest) returns (GetAnalogChannelsResponse) {}
+    
+    rpc SetChannelMode(SetChannelModeRequest) returns (SetChannelModeResponse) {}
+
     
 }
 
@@ -82,49 +83,59 @@ message GetDeviceDetailsResponse {
 }
 
 
-message GetDigitalOutputsRequest {
-    string name = 1;
-    string units = 2;
-}
-
-message GetDigitalOutputsResponse {
-    string name = 1;
-    int32 number = 2;
-    repeated string names = 3;
-}
-
-message GetDigitalInputsRequest {
+message GetDigitalChannelsRequest {
     string name = 1;
    
 }
 
-message GetDigitalInputsResponse {
+message GetDigitalChannelsResponse {
     string name = 1;
     int32 number = 2;
     repeated string names = 3;
 }
 
 
-message GetAnalogOutputsRequest {
-    string name = 1;
-}
-
-message GetAnalogOutputsResponse {
-    string name = 1;
-    int32 number = 2;
-    repeated string names = 3;
-}
-
-message GetAnalogInputsRequest {
+message GetAnalogChannelsRequest {
     string name = 1;
     string units = 2;
 }
 
-message GetAnalogInputsResponse {
+message GetAnalogChannelsResponse {
     string name = 1;
     int32 number = 2;
     repeated string names = 3;
 }
 
+enum ChannelMode {
+    UNKNOWN = 0;
+    INPUT = 1;
+    OUTPUT = 2;
+}
+
+message SetChannelModeRequest {
+    string name = 1;
+    string channel_name  = 2;
+    string channel_uid = 3;
+    ChannelMode mode = 4;
+}
+
+message SetChannelModeResponse {
+    string name = 1;
+    string channel_name  = 2;
+    string channel_uid = 3;
+    ChannelMode mode = 4;
+}
 
 
+message GetChannelModeRequest {
+    string name = 1;
+    string channel_name  = 2;
+    string channel_uid = 3; 
+}
+
+message GetChannelModeResponse {
+    string name = 1;
+    string channel_name  = 2;
+    string channel_uid = 3;
+    ChannelMode mode = 4;
+}
