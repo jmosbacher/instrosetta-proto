@@ -11,7 +11,7 @@ service FilterFlipper {
     rpc SetPosition(SetPositionRequest) returns (SetPositionResponse) {}
     
     rpc GetInfo(GetInfoRequest) returns (GetInfoResponse) {}
-    rpc SetInfo(SetInfoRequest) returns (SetInfoResponse) {}
+    
     
     
 }
@@ -39,55 +39,39 @@ message ShutdownResponse {
     bool success = 2;
 }
 
-
+enum FlipperPosition {
+    UNKNOWN = 0;
+    DOWN = 1;
+    UP = 2;
+}
 
 message GetPositionRequest {
     string name = 1;
-    string units = 2;
 }
 
 message GetPositionResponse {
     string name = 1;
-    double value = 2;
-    string units = 3;
+    FlipperPosition value = 2;
 }
 
 message SetPositionRequest {
     string name = 1; 
-    double value = 2;
-    string units = 3;
+    FlipperPosition value = 2;
+    
 }
 
 message SetPositionResponse {
     string name = 1; 
-    double value = 2;
-    string units = 3;
+    FlipperPosition value = 2;
+    
 }
-
 
 message GetInfoRequest {
     string name = 1;
-    string units = 2;
 }
 
 message GetInfoResponse {
     string name = 1;
-    double value = 2;
-    string units = 3;
+    map <string, string> properties = 2;
+
 }
-
-message SetInfoRequest {
-    string name = 1; 
-    double value = 2;
-    string units = 3;
-}
-
-message SetInfoResponse {
-    string name = 1; 
-    double value = 2;
-    string units = 3;
-}
-
-
-
-
