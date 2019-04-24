@@ -1,5 +1,7 @@
 syntax = "proto3";
 
+package instrosetta.common.units.v1;
+
 // Currently only SI derived dimensions are supported
 message PhysicalDimension {
     string name = 1;

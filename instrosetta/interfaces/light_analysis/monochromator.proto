@@ -82,7 +82,7 @@ message GetGratingOptionsRequest {
 
 message GetGratingOptionsResponse {
     string name = 1; 
-    repeated uint32 grating_ids = 2;
+    repeated uint32 options = 2;
     
 }
 

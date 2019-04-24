@@ -1,0 +1,45 @@
+syntax = "proto3";
+
+package instrosetta.interfaces.general.generic_device.v1;
+
+import "instrosetta/common/units.proto";
+
+service GenericDevice {
+    // rpc (Request) returns (Response) {}
+    rpc Initialize(InitializeRequest) returns (InitializeResponse) {}
+    rpc Shutdown(ShutdownRequest) returns (ShutdownResponse) {}
+    rpc GetProperties(GetPropertiesRequest) returns (GetPropertiesResponse) {}
+    rpc GetMethods(GetMethodsRequest) returns (GetMethodsResponse) {}
+    rpc GetBool(GetBoolRequest) returns (GetBoolResponse) {}
+    rpc SetBool(SetBoolRequest) returns (SetBoolResponse) {}
+    rpc GetInt64(GetInt64Request) returns (GetInt64Response) {}
+    rpc SetInt64(SetInt64Request) returns (SetInt64Response) {}
+    rpc GetDouble(GetDoubleRequest) returns (GetDoubleResponse) {}
+    rpc SetDouble(SetDoubleRequest) returns (SetDoubleResponse) {}
+    rpc GetPhysicsValue(GetPhysicsValueRequest) returns (GetPhysicsValueResponse) {}
+    rpc SetPhysicsValue(SetPhysicsValueRequest) returns (SetPhysicsValueResponse) {}
+
+    rpc GetPhysicsValueStream(GetPhysicsValueRequest) returns (stream GetPhysicsValueResponse) {}
+    rpc SetPhysicsValueStream(stream SetPhysicsValueRequest) returns (SetPhysicsValueResponse) {}
+}
+
+message InitializeRequest {
+    string name = 1;
+    map <string, string> properties = 2;
+
+}
+
+message InitializeResponse {
+    string name = 1;
+    bool success = 2;
+}
+
+message ShutdownRequest {
+    string name = 1;
+}
+
+message ShutdownResponse {
+    string name = 1;
+    bool success = 2;
+}
+
