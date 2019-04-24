@@ -32,6 +32,7 @@ service FilterWheel {
 message InitializeRequest {
     string name = 1;
     map <uint32, string> filter_map = 2;
+    bool simulate = 3;
 
 }
 

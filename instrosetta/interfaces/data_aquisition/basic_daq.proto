@@ -9,8 +9,8 @@ service BasicDaq {
     rpc Initialize(InitializeRequest) returns (InitializeResponse) {}
     rpc Shutdown(ShutdownRequest) returns (ShutdownResponse) {}
 
-    rpc ReadDigital(ReadDigitalRequest) returns (ReadDigitalResponse) {}
-    rpc ReadAnalog(ReadAnalogRequest) returns (ReadAnalogResponse) {}
+    rpc ReadDigital(ReadDigitalRequest) returns (stream ReadDigitalResponse) {}
+    rpc ReadAnalog(ReadAnalogRequest) returns (stream ReadAnalogResponse) {}
     rpc WriteDigital(WriteDigitalRequest) returns (WriteDigitalResponse) {}
     rpc WriteAnalog(WriteAnalogRequest) returns (WriteAnalogResponse) {}
     
@@ -39,6 +39,7 @@ message GetAvailbleDevicesResponse {
 message InitializeRequest {
     string name = 1;
     map <string, string> properties = 2;
+    bool simulate = 3;
 
 }
 
@@ -59,6 +60,8 @@ message ShutdownResponse {
 
 message ReadDigitalRequest {
     string name = 1; 
+    uint32 max_samples = 2;
+    uint32 sample_rate = 3;
 }
 
 message ReadDigitalResponse {
@@ -67,6 +70,8 @@ message ReadDigitalResponse {
 }
 message ReadAnalogRequest {
     string name = 1; 
+    uint32 max_samples = 2;
+    uint32 sample_rate = 3;
 }
 
 message ReadAnalogResponse {

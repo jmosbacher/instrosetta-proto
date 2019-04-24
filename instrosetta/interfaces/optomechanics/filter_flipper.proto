@@ -22,6 +22,7 @@ service FilterFlipper {
 message InitializeRequest {
     string name = 1;
     map <string, string> properties = 2;
+    bool simulate = 3;
 
 }
 

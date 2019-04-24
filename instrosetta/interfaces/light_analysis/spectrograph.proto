@@ -39,7 +39,7 @@ service Spectrograph {
 message InitializeRequest {
     string name = 1;
     map <string, string> properties = 2;
-
+    bool simulate = 3;
 }
 
 message InitializeResponse {
@@ -55,7 +55,6 @@ message ShutdownResponse {
     string name = 1;
     bool success = 2;
 }
-
 
 message SaveRequest {
     string name = 1; 
@@ -84,7 +83,6 @@ message ClearScreenRequest {
 message ClearScreenResponse {
     string name = 1;
 }
-
 
 message Grating {
     string name = 1;
@@ -173,7 +171,6 @@ message SetWavelengthResponse {
     string units = 3;
 }
 
-
 message GetExposureRequest {
     string name = 1;
     string units = 2;
@@ -232,7 +229,6 @@ message GetInitializeionDetailsResponse {
     double magnitude = 2;
     string units = 3;
 }
-
 
 message GetReadoutModeRequest {
     string name =1;

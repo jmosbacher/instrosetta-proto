@@ -20,6 +20,7 @@ message InitializeRequest {
     string name = 1;
     string serial_port = 2;
     float timeout = 3;
+    bool simulate = 4;
 }
 
 message InitializeResponse {
@@ -35,7 +36,6 @@ message ShutdownResponse {
     string name = 1;
     bool success = 2;
 }
-
 
 message GetPowerRequest {
     string name = 1;
