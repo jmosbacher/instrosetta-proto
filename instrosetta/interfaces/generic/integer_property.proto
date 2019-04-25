@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package instrosetta.interfaces.generic.integer_property.v1;
+
+
+service IntegerProperty {
+    rpc GetValue(GetValueRequest) returns (GetValueResponse) {}
+    rpc SetValue(SetValueRequest) returns (SetValueResponse) {}
+}
+
+message GetValueRequest {
+    string name = 1;
+}
+
+message GetValueResponse {
+    string name = 1;
+}
+
+message SetValueRequest {
+    string name = 1;
+}
+
+message SetValueResponse {
+    string name = 1;
+}
