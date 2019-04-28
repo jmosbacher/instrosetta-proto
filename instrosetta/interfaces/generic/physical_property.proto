@@ -22,7 +22,6 @@ message GetValueResponse {
 message SetValueRequest {
     string name = 1;
     instrosetta.utils.units.v1.PhysicalQuantity value = 2;
-    
 }
 
 message SetValueResponse {
