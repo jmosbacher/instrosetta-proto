@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package instrosetta.common.units.v1;
+package instrosetta.utils.units.v1;
 
 // Currently only SI derived dimensions are supported
 message PhysicalDimension {
@@ -36,6 +36,14 @@ message Timestamp {
     string precision_name = 3;
     int32 precision_exponent = 4;
 }
+
+message Timedelta {
+    string name = 1;
+    int64 value = 2;
+    string precision_name = 3;
+    int32 precision_exponent = 4;
+}
+
 
 enum DataQuality {
     UNKNOWN = 0;

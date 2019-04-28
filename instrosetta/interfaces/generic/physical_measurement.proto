@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package instrosetta.interfaces.generic.physcal_measurement.v1;
+
+import "instrosetta/utils/units.proto";
+
+service PhysicalMeasurement {
+    rpc PerformMeasurment(PerformMeasurmentRequest) returns (stream PerformMeasurmentResponse) {}
+    
+}
+
+
+message PerformMeasurmentRequest {
+    string name = 1;
+    uint64 max_samples = 2;
+    uint64 sample_rate = 3;
+    instrosetta.utils.units.v1.Timestamp start_after = 4;
+    instrosetta.utils.units.v1.Timedelta delay = 5;
+    map <string, string> extra_settings = 6;
+
+}
+
+message PerformMeasurmentResponse {
+    string name = 1;
+    instrosetta.utils.units.v1.PhysicalMeasurement measurement = 2;
+}
+

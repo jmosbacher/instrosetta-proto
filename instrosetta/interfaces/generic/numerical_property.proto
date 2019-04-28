@@ -27,9 +27,14 @@ message SetValueRequest {
         int64 int64 = 2;
         double double = 3;
     }
+    
 }
 
 message SetValueResponse {
     string name = 1;
-    
+    oneof value {
+        int64 int64 = 2;
+        double double = 3;
+    }
+
 }
