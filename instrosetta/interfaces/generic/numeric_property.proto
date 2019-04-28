@@ -1,9 +1,9 @@
 syntax = "proto3";
 
-package instrosetta.interfaces.generic.numerical_property.v1;
+package instrosetta.interfaces.generic.numeric_property.v1;
 
 
-service NumericalProperty {
+service NumericProperty {
     rpc GetValue(GetValueRequest) returns (GetValueResponse) {}
     rpc SetValue(SetValueRequest) returns (SetValueResponse) {}
 }
